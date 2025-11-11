@@ -1,8 +1,8 @@
 #ifndef _MAIN
 #define _MAIN
 
-#include "global.h"
+#include "global.hpp"
 
-extern Global global;
+extern Global g;
 
 #endif  // !_MAIN

@@ -1,15 +1,16 @@
 #ifndef _MATTER
 #define _MATTER
 
-#include "core/compositor.h"
+#include "core/compositor.hpp"
 class Global {
  public:
   struct {
     bool verbose = false;
-  } conf = {};
+    char log_level[2] = "0";
+  } opt;
 
   Compositor compositor;
-  void setup();
+  int initialize();
 };
 
 #endif  // !_MATTER
