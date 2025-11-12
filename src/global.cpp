@@ -3,8 +3,6 @@
 #include <LLauncher.h>
 #include <LLog.h>
 
-#include <cstdlib>
-
 #include "core/compositor.hpp"
 
 using namespace CZ;
@@ -25,13 +23,15 @@ int Global::initialize() {
 
   LLauncher::startDaemon();
 
-  if (!compositor.start()) {
+  compositor = new Compositor;
+
+  if (!compositor->start()) {
     LLog(CZFatal, CZLN, "Failed to start compositor");
     return EXIT_FAILURE;
   }
 
-  while (compositor.state() != Compositor::Uninitialized)
-    compositor.dispatch(-1);
+  while (compositor->state() != Compositor::Uninitialized)
+    compositor->dispatch(-1);
 
   return EXIT_SUCCESS;
 }

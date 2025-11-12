@@ -6,12 +6,11 @@
 #include <Core/Events/CZKeyboardKeyEvent.h>
 #include <linux/input-event-codes.h>
 
-#include <cstdio>
-
 #include "Cuarzo.h"
 #include "LLauncher.h"
 #include "Seat/LKeyboard.h"
 #include "main.hpp"
+
 using namespace CZ;
 
 void Keyboard::keyEvent(const CZKeyboardKeyEvent& event) {
@@ -25,14 +24,14 @@ void Keyboard::keyEvent(const CZKeyboardKeyEvent& event) {
 
   if (!event.isPressed) {
     if (event.code == KEY_ESC && L_CTRL && L_SHIFT) {
-      g.compositor.finish();
+      g.compositor->finish();
       return;
     }
     if (event.code == KEY_F1 && !mods) {
-      LLauncher::launch("");
+      LLauncher::launch("ptyxis");
       return;
     }
   }
 
-  // LKeyboard::keyEvent(event);
+  LKeyboard::keyEvent(event);
 }

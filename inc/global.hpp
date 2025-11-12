@@ -9,7 +9,7 @@ class Global {
     char log_level[2] = "0";
   } opt;
 
-  Compositor compositor;
+  Compositor* compositor;
   int initialize();
 };
 
